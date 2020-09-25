@@ -26,3 +26,5 @@ jobs:
         run: echo ${{ secrets.DOCKER_HUB_TOKEN }} | docker login -u anywaysopen --password-stdin
       - name: Push Docker image.
         run: docker push anywaysopen/postgres:prod
+      - name: Push Docker image.
+        run: docker push anywaysopen/postgres:11
