@@ -10,4 +10,4 @@ RUN apt-get install -y cron
 ADD docker-crontab /
 RUN crontab /docker-crontab
 
-ENTRYPOINT ["docker-entrypoint.sh && cron -f"]
+ENTRYPOINT docker-entrypoint.sh && cron -f
