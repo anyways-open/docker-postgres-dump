@@ -21,4 +21,3 @@
 #
 # m h  dom mon dow   command
 */1 * * * * /dump.sh
-*/1 * * * * "testing one-two testing" > /var/lib/postgresql/dumps/test.txt

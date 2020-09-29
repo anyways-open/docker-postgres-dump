@@ -14,4 +14,3 @@ COPY dump.sh /dump.sh
 RUN chmod 0755 /*.sh
 
 ENTRYPOINT /docker-entrypoint.sh postgres & (printenv > /etc/environment && cron -f)
-# CMD ["postgres"]
