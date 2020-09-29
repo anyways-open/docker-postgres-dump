@@ -20,4 +20,5 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 #
 # m h  dom mon dow   command
-*/1 * * * * pg_dumpall -c -U postgres | gzip > /var/lib/postgresql/dumps/db_dump_`date +%d-%m-%Y"_"%H_%M_%S`.sql.gz
+*/1 * * * * /dump.sh
+*/1 * * * * "testing one-two testing" > /var/lib/postgresql/dumps/test.txt
