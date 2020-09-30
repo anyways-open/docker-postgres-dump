@@ -1,23 +1,12 @@
-# Edit this file to introduce tasks to be run by cron.
-#
-# Each task to run has to be defined through a single line
-# indicating with different fields when the task will be run
-# and what command to run for the task
-#
-# To define the time you can provide concrete values for
-# minute (m), hour (h), day of month (dom), month (mon),
-# and day of week (dow) or use '*' in these fields (for 'any').#
-# Notice that tasks will be started based on the cron's system
-# daemon's notion of time and timezones.
-#
-# Output of the crontab jobs (including errors) is sent through
-# email to the user the crontab file belongs to (unless redirected).
-#
-# For example, you can run a backup of all your user accounts
-# at 5 a.m every week with:
-# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
-#
-# For more information see the manual pages of crontab(5) and cron(8)
-#
-# m h  dom mon dow   command
+# we write a dump every minute and
+# - keep minutely backups for the last 2 hours.
+# - keep hourly backups for the past 7 days.
+# - keep daily backups for the last 30 days.
+# - keep monthly backups for the last 365 days.
+# - keep all yearlies.
+
 */1 * * * * /dump.sh
+*/1 * * * * find /var/lib/postgresql/dumps/ -mmin +120 -a ! -name "*_00_??.sql.gz" -exec rm {} \; # delete all backups older than 2 hours not written hourly.
+*/1 * * * * find /var/lib/postgresql/dumps/ -mtime +7 -a ! -name "*_00_00_??.sql.gz" -exec rm {} \;  # delete all backups older than 7 days not written daily.
+*/1 * * * * find /var/lib/postgresql/dumps/ -mtime +30 -a ! -name "db_dumps_01*" -exec rm {} \;  # delete all backups older than 30 days not written monthly.
+*/1 * * * * find /var/lib/postgresql/dumps/ -mtime +365 -a ! -name "db_dumps_01-01*" -exec rm {} \;  # delete all backups older than 365 days not written yearly.
