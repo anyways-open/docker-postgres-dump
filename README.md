@@ -8,7 +8,7 @@ A custom docker image for postgres with built-in data dumps.
 
 Backups are generate every minute to the volume `/var/lib/postgresql/dumps/` by executing 
 
-  `pg_dumpall -c -U postgres | gzip > /var/lib/postgresql/dumps/db_dump_`date +%d-%m-%Y"_"%H_%M_%S`.sql.gz`
+  ```pg_dumpall -c -U postgres | gzip > /var/lib/postgresql/dumps/db_dump_`date +%d-%m-%Y"_"%H_%M_%S`.sql.gz```
 
 The should be **stored on the host by mapping the volume**.
 
