@@ -23,7 +23,7 @@ jobs:
       - name: Build the Docker image
         run: docker build . --file Dockerfile --tag anywaysopen/postgres:prod --tag anywaysopen/postgres:11
       - name: Login to Docker Hub
-        run: echo ${{ secrets.DOCKER_HUB_TOKEN }} | docker login -u anywaysopen --password-stdin
+        run: echo ${{ secrets.DOCKER_HUB_TOKEN }} | docker login -u anywaysbot --password-stdin
       - name: Push Docker image.
         run: docker push anywaysopen/postgres:prod
       - name: Push Docker image.
