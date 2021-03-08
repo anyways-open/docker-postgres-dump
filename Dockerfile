@@ -1,4 +1,4 @@
-FROM postgres:11
+FROM postgres:13
 
 LABEL maintainer="ANYWAYS BV"
 
@@ -10,7 +10,7 @@ RUN apt-get install -y cron nano
 ADD docker-crontab /
 RUN crontab /docker-crontab
 
-COPY dump.sh /dump.sh
+COPY *.sh /
 RUN chmod 0755 /*.sh
 
-ENTRYPOINT /docker-entrypoint.sh postgres & (printenv > /etc/environment && cron -f)
+ENTRYPOINT (printenv > /etc/environment && cron -f)

@@ -21,10 +21,10 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag anywaysopen/postgres:prod --tag anywaysopen/postgres:11
-      - name: Login to Docker Hub
-        run: echo ${{ secrets.DOCKER_HUB_TOKEN }} | docker login -u anywaysopen --password-stdin
+        run: docker build . --file Dockerfile --tag anywaysopen/postgres-dump:prod --tag anywaysopen/postgres-dump:prod-0.$GITHUB_RUN_NUMBER
+      - name: Login to Dock Hub
+        run: echo ${{ secrets.DOCKER_HUB_TOKEN }} | docker login -u anywaysbot --password-stdin 
       - name: Push Docker image.
-        run: docker push anywaysopen/postgres:prod
+        run: docker push anywaysopen/postgres-dump:prod
       - name: Push Docker image.
-        run: docker push anywaysopen/postgres:11
+        run: docker push anywaysopen/postgres-dump:prod-0.$GITHUB_RUN_NUMBER

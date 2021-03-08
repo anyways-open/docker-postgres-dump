@@ -1,0 +1,14 @@
+version: "3.4"
+
+services:
+  postgres-db-dump:
+    image: test:latest
+    volumes:
+      - /data/work/temp/temp:/var/lib/postgresql/dumps
+    environment:
+      PGDUMP_USER: postgres
+      PGDUMP_PORT: 6301
+      PGDUMP_HOST: '135.181.25.212'
+      PGDUMP_DB: bike2work-reports
+      PGPASSWORD: twy3jEpa
+      PGDUMP_MINUTE: 'false'
