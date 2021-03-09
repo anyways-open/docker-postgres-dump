@@ -30,6 +30,13 @@ The container can be configure by using the following env vars:
 - PGDUMP_DB: the name of the database to dump.
 - PGPASSWORD: the password or secret containing the password.
 
+Configure **one** of the following to control when backups are taken:
+- PGDUMP_MINUTE: `true`, backups every minute.
+- PGDUMP_HOUR: `true`, backups every hour.
+- PGDUMP_DAY: `true`, backups every day.
+
+The larger the database, the longer the interval. The next dump will already start even if the previous one hasn't yet finished.
+
 An example configuration:
 
 ```
@@ -50,7 +57,7 @@ An example configuration:
       PGDUMP_PORT: 5432
       PGDUMP_HOST: identity-api-db
       PGDUMP_DB: users
-      PGDUMP_HOURLY: 'true'
+      PGDUMP_HOUR: 'true'
 ```
 
 ## Restore
