@@ -10,5 +10,5 @@ services:
       PGDUMP_PORT: 6301
       PGDUMP_HOST: '135.181.25.212'
       PGDUMP_DB: bike2work-reports
-      PGPASSWORD: twy3jEpa
-      PGDUMP_MINUTE: 'false'
+      PGPASSWORD_FILE: /data/work/anyways/config/bike2work-reports-pass.txt
+      PGDUMP_MINUTE: 'true'
