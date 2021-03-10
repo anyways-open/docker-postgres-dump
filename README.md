@@ -52,7 +52,7 @@ An example configuration:
     volumes:
       - /var/services/backups/identity-api-db-dump:/var/lib/postgresql/dumps
     environment:
-      PGPASSWORD: _redacted_
+      PGPASSWORD_FILE: /path/to/secret
       PGDUMP_USER: postgres
       PGDUMP_PORT: 5432
       PGDUMP_HOST: identity-api-db
