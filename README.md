@@ -64,6 +64,6 @@ An example configuration:
 
 Restoring a backup into an **empty** running docker container can be done as follows:
 
-   `cat db_dump_25-09-2020_21_47_16.sql | docker exec -i container-name psql -U postgres`
+   `cat db_dump_25-09-2020_21_47_16.sql | docker exec -i container-name psql -U postgres db-name`
    
    
