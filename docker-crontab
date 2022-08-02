@@ -1,14 +1,12 @@
 # we write a dump every minute and
 # - keep minutely backups for the last 2 hours.
-# - keep hourly backups for the past 7 days.
-# - keep daily backups for the last 30 days.
+# - keep daily backups for the last 7 days.
 # - keep monthly backups for the last 365 days.
 # - keep all yearlies.
 
 */1 * * * * /minutely.sh
   0 * * * * /hourly.sh
   0 0 * * * /daily.sh
-*/1 * * * * find /var/lib/postgresql/dumps/ -mmin +120 -a ! -name "*_00_??.sql.gz" -exec rm {} \; # delete all backups older than 2 hours not written hourly.
-*/1 * * * * find /var/lib/postgresql/dumps/ -mtime +7 -a ! -name "*_00_00_??.sql.gz" -exec rm {} \;  # delete all backups older than 7 days not written daily.
-*/1 * * * * find /var/lib/postgresql/dumps/ -mtime +30 -a ! -name "db_dump_01*" -exec rm {} \;  # delete all backups older than 30 days not written monthly.
-*/1 * * * * find /var/lib/postgresql/dumps/ -mtime +365 -a ! -name "db_dump_01-01*" -exec rm {} \;  # delete all backups older than 365 days not written yearly.
+*/15 * * * * find /var/lib/postgresql/dumps/ -mmin +120 -a ! -name "*_00_??.sql.gz" -exec rm {} \; # delete all backups older than 2 hours not written hourly.
+*/15 * * * * find /var/lib/postgresql/dumps/ -mtime +7 -a ! -name "db_dump_01*" -exec rm {} \;  # delete all backups older than 7 days not written monthly.
+*/15 * * * * find /var/lib/postgresql/dumps/ -mtime +365 -a ! -name "db_dump_01-01*" -exec rm {} \;  # delete all backups older than 365 days not written yearly.
