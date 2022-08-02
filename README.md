@@ -16,8 +16,7 @@ The should be **stored on the host by mapping the volume**.
 
 The container by default:
 - keeps minutely backups for the last 2 hours.
-- keeps hourly backups for the past 7 days.
-- keeps daily backups for the last 30 days.
+- keeps daily backups for the last 7 days.
 - keeps monthly backups for the last 365 days.
 - keep all yearlies.
 
