@@ -65,4 +65,9 @@ Restoring a backup into an **empty** running docker container can be done as fol
 
    `cat db_dump_25-09-2020_21_47_16.sql | docker exec -i container-name psql -U postgres db-name`
    
+For example for restoring the edit-api we did the following:
+
+  `printf "CREATE DATABASE \"edit-api\";"  | docker exec -i 9cc0139c118a psql -U postgres`  
+  `gzip -d -c -k db_dump_11-11-2022_00_00_01.sql.gz | docker exec -i 9cc0139c118a psql -U postgres edit-api`
+   
    
